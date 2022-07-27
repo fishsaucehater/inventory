@@ -1,0 +1,14 @@
+.card-wrapper {
+    display: inline;
+    margin: 1rem;
+}
+
+.item {
+    height: 5px;
+    background-color: red;
+}
+
+.machine {
+    height: 5px;
+    background-color: blue;
+}

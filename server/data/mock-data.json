@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Kho 1",
+        "address": "566 Nguyen Thai Son",
+        "itemCount": 10000
+    },
+    {
+        "name": "Kho 2",
+        "type": "Kho may",
+        "address": "7/30 Duong A",
+        "itemCount": 20000
+    }, 
+    {
+        "name": "Kho 3",
+        "type": "Kho may",
+        "address": "Phu Nhuan"
+    },
+    {
+        "name": "Kho 4",
+        "type": "Kho may",
+        "address": "Tan Phu"
+    },
+    {
+        "name": "Kho 5",
+        "address": "Quan 1"
+    }
+]

@@ -1,0 +1,87 @@
+.wrapper {
+	background-color: whitesmoke;
+	display: flex;
+	flex-direction: row;
+	height: 7rem;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-bottom: 2rem;
+}
+
+.name {
+	font-size: 20px;
+	color: rgba(108, 107, 107, 0.9);
+}
+
+.section {
+	flex-basis: 50%;
+	margin-top: 1rem;
+	margin-left: 1rem;
+}
+
+.inventory-input {
+	background-color: whitesmoke;
+	border-width: 0 0 3px 0;
+	width: 95%;
+	border-color: rgba(85, 84, 84, 0.6);
+}
+
+.inventory-input:focus {
+	outline: none;
+	border-color: black;
+}
+
+.add-new-button {
+	position: fixed;
+	cursor: pointer;
+	bottom: 20px;
+	right: 20px;
+	border-radius: 50%;
+	background-color: #5393ff;
+	height: 5rem;
+	width: 5rem;
+	text-align: center;
+	line-height: 5rem;
+	font-size: 42px;
+	color: white;
+}
+
+.add-new-button:hover {
+	background-color: #2979ff;
+}
+
+.none {
+    display: none;
+}
+
+.form {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	background-color: lightgray;
+	margin-left: auto;
+	margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+	left: 0;
+	right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.form > form {
+    margin: 1rem ;
+}
+
+.close-button {
+    cursor: pointer;
+    align-self: flex-end;
+    margin: 0.5rem;
+}
+
+.close-button:hover {
+    color: white;
+}
