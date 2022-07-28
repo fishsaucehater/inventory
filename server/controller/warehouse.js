@@ -10,3 +10,14 @@ exports.getAllWarehouses = async (req, res) => {
 		console.log(error);
 	}
 };
+
+exports.addNewWarehouse = async (req, res) => {
+	try {
+		console.log(req.body);
+		const warehouse = req.body;
+		await Warehouse.create(warehouse);
+		res.send('Done');
+	} catch (error) {
+		console.log(error);
+	}
+};

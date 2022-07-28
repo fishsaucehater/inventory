@@ -3,6 +3,7 @@ const peopleRouter = require('./routes/peopleRoutes');
 
 const app = express();
 
+app.use(express.json());
 
 app.use('/api', peopleRouter);
 

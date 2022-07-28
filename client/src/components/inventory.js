@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import '../css/inventory.css';
 import { Card } from './warehouse-card';
+import Modal from 'react-bootstrap/Modal';
 
 export function Inventory({ data, isLoading }) {
 	let [formOpened, setForm] = useState(false);
 
 	const warehouseCards = data.map((warehouse) => {
-		console.log(warehouse);
 		return <Card warehouse={warehouse} />;
 	});
 
@@ -19,7 +19,7 @@ export function Inventory({ data, isLoading }) {
 	};
 
 	return (
-		<div>
+		<div className=''>
 			<Search />
 			<div className='container'>
 				<div className='row'>{isLoaded(isLoading, warehouseCards)}</div>
@@ -37,6 +37,24 @@ export function Inventory({ data, isLoading }) {
 }
 
 function WarehouseForm({ isOpened, setOpened }) {
+	let [name, setName] = useState();
+	let [address, setAddress] = useState();
+	let [type, setType] = useState();
+
+	async function handleSubmit(event) {
+		setOpened(false);
+		let jsonData = {
+			name: name,
+			address: address,
+			type: type,
+		};
+		await fetch('/api', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(jsonData),
+		});
+	}
+
 	function openForm(isOpened) {
 		if (!isOpened) {
 			return 'none';
@@ -44,27 +62,66 @@ function WarehouseForm({ isOpened, setOpened }) {
 		return 'form';
 	}
 	return (
-		<div className={openForm(isOpened)}>
-			<div
-				className='close-button'
-				onClick={() => {
-					setOpened(false);
-				}}>
-				<b>X</b>
-			</div>
-			<form>
-				<div className='input'>
-					<label htmlFor='name'>Warehouse Name</label>
-					<br />
-					<input type='text' name='name' placeholder='Name' />
+		<Modal
+			show={isOpened}
+			onHide={() => {
+				setOpened(false);
+			}}>
+			<Modal.Body>
+				<div className={openForm(isOpened)}>
+					<div
+						className='close-button'
+						onClick={() => {
+							setOpened(false);
+						}}>
+						<b>X</b>
+					</div>
+					<form>
+						<div className='input'>
+							<label htmlFor='name'>Địa chỉ</label>
+							<br />
+							<input
+								className='text-field'
+								type='text'
+								name='name'
+								placeholder='Name'
+								onChange={(event) => {
+									setName(event.target.value);
+									console.log(name);
+								}}
+							/>
+						</div>
+						<div className='input'>
+							<label htmlFor='address'>Địa chỉ</label>
+							<br />
+							<input
+								className='text-field'
+								type='text'
+								name='address'
+								placeholder='Address'
+								onChange={(event) => setAddress(event.target.value)}
+							/>
+						</div>
+						<div className='input'>
+							<label htmlFor='type'>Loại kho</label>
+							<br />
+							<input
+								className='text-field'
+								type='text'
+								id='javascript'
+								name='type'
+								placeholder='Nhập loại kho'
+								onChange={(event) => setType(event.target.value)}
+							/>
+						</div>
+						<div className='btn btn-outline-primary' onClick={handleSubmit}>
+							{' '}
+							Submit{' '}
+						</div>
+					</form>
 				</div>
-				<div className='input'>
-					<label htmlFor='address'>Address</label>
-					<br />
-					<input type='text' name='address' placeholder='Address' />
-				</div>
-			</form>
-		</div>
+			</Modal.Body>
+		</Modal>
 	);
 }
 

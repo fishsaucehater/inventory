@@ -13,8 +13,6 @@ function App() {
 		fetch('/api')
 			.then((response) => response.json())
 			.then((data) => {
-				console.log('reading from front end');
-				console.log(data);
 				setData(data);
 				setLoad(false);
 			});
