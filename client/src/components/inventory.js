@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import '../css/inventory.css';
 import { Card } from './warehouse-card';
 import Modal from 'react-bootstrap/Modal';
-import { Outlet } from 'react-router-dom';
 
 /**
  *
@@ -30,7 +29,7 @@ export function Inventory() {
 	const isLoaded = (isLoading) => {
 		if (isLoading) {
 			return <div>loading...</div>;
-		} else if (data.length == 0) {
+		} else if (data.length === 0) {
 			return <div>No data</div>;
 		} else {
 			warehouseCards = data.map((warehouse) => {
@@ -61,7 +60,6 @@ export function Inventory() {
 				setOpened={setForm}
 				setData={setData}
 			/>
-			<Outlet />
 		</div>
 	);
 }

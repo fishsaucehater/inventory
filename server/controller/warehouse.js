@@ -1,5 +1,3 @@
-const { json } = require('express');
-const fs = require('fs');
 const Warehouse = require('../models/warehouse');
 
 exports.getAllWarehouses = async (req, res) => {
@@ -23,7 +21,6 @@ exports.getWarehouse = async (req, res) => {
 
 exports.addNewWarehouse = async (req, res) => {
 	try {
-		console.log(req.body);
 		const warehouse = req.body;
 		await Warehouse.create(warehouse);
 		const warehouses = await Warehouse.find();

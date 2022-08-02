@@ -20,7 +20,7 @@ function Warehouse() {
 			.catch((err) => {
 				console.error(err);
 			});
-	}, []);
+	}, [id]);
 
 	if (warehouse == null) {
 		return <div>Loading...</div>;

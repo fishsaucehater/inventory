@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import '../css/card.css';
 
 export function Card({ warehouse, setData }) {
-	let [editing, setEdit] = useState();
-
 	function warehouseType() {
 		if (warehouse.type.toUpperCase() === 'Kho Vat tu'.toUpperCase()) {
 			return 'item';
