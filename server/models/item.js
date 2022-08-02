@@ -3,14 +3,20 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const itemSchema = mongoose.Schema({
-	name: {
-		type: String,
+	product_id: {
+		type: Schema.Types.ObjectId,
+		ref: 'Product',
 		required: [true, 'Must have a name'],
-    },
-    product_id: {
-        type: Schema.Types.ObjectId,
-        ref: 'Product'
-    }
+	},
+	warehouse_id: {
+		type: Schema.Types.ObjectId,
+		ref: 'Warehouse',
+		required: [true, 'Must have a name'],
+	},
+	status: {
+		type: String,
+		default: 'In storage',
+	},
 });
 
 const Item = mongoose.model('Item', itemSchema);

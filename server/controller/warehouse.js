@@ -1,6 +1,6 @@
+const { json } = require('express');
 const fs = require('fs');
 const Warehouse = require('../models/warehouse');
-
 
 exports.getAllWarehouses = async (req, res) => {
 	try {
@@ -11,12 +11,34 @@ exports.getAllWarehouses = async (req, res) => {
 	}
 };
 
+exports.getWarehouse = async (req, res) => {
+	try {
+		let id = req.params.id;
+		let warehouse = await Warehouse.findById(id);
+		res.status(200).json(warehouse);
+	} catch (error) {
+		console.log(error);
+	}
+};
+
 exports.addNewWarehouse = async (req, res) => {
 	try {
 		console.log(req.body);
 		const warehouse = req.body;
 		await Warehouse.create(warehouse);
-		res.send('Done');
+		const warehouses = await Warehouse.find();
+		res.status(200).json(warehouses);
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+exports.deleteWarehouse = async (req, res) => {
+	try {
+		let id = req.params.id;
+		await Warehouse.deleteOne({ _id: id });
+		const warehouses = await Warehouse.find();
+		res.json(warehouses);
 	} catch (error) {
 		console.log(error);
 	}

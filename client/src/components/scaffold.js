@@ -18,7 +18,7 @@ export function NavBar() {
 						<i className='material-icons'>apps</i>
 					</div>
 				</div>
-				<Link id='dashboard' to='/' className='button-wrapper'>
+				<Link id='dashboard' to='/home' className='button-wrapper'>
 					<div id='inventory' className='button'>
 						Inventories
 					</div>

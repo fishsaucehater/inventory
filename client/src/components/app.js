@@ -1,46 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { NavBar } from './scaffold';
 import '../css/index.css';
 import { Inventory } from './inventory';
+import Warehouse from './warehouse';
 
 function App() {
-	let [backendData, setData] = useState();
-	let [isLoading, setLoad] = useState(true);
-
-	useEffect(() => {
-		setLoad(true);
-		fetch('/api')
-			.then((response) => response.json())
-			.then((data) => {
-				setData(data);
-				setLoad(false);
-			});
-	}, []);
-
-	function downloading() {
-		if (isLoading) {
-			return [
-				{
-					name: 'loading',
-					address: 'loading',
-					itemCount: 'loading',
-				},
-			];
-		} else {
-			return backendData;
-		}
-	}
-
 	return (
 		<div>
 			<NavBar />
 			<Routes>
-				<Route
-					path='/'
-					element={<Inventory data={downloading()} isLoading={isLoading} />}
-				/>
-				<Route path='*' element={<div>No data</div>} />
+				<Route path='/home' element={<Inventory />} />
+				<Route path='/:id' element={<Warehouse />} />
+				<Route path='add/:warehouse_id' element={<div></div>} />
+				<Route path='*' element={<Navigate to='/home' />} />
 			</Routes>
 		</div>
 	);

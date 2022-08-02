@@ -1,10 +1,10 @@
 const express = require('express');
-const peopleRouter = require('./routes/peopleRoutes');
+const warehouseRouter = require('./routes/warehouseRoutes');
 
 const app = express();
 
 app.use(express.json());
 
-app.use('/api', peopleRouter);
+app.use('/warehouse', warehouseRouter);
 
 exports.app = app;

@@ -1,28 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/inventory.css';
 import { Card } from './warehouse-card';
 import Modal from 'react-bootstrap/Modal';
+import { Outlet } from 'react-router-dom';
 
-export function Inventory({ data, isLoading }) {
+/**
+ *
+ * @returns Inventory page component
+ */
+export function Inventory() {
+	let [data, setData] = useState([]);
+	let [isLoading, setLoad] = useState(true);
+	let warehouseCards;
+
+	//Load data from api when mounted
+	useEffect(() => {
+		setLoad(true);
+		fetch('/warehouse').then((response) => {
+			response.json().then((res) => {
+				setData(res);
+				setLoad(false);
+			});
+		});
+	}, [data.length]);
+
 	let [formOpened, setForm] = useState(false);
 
-	const warehouseCards = data.map((warehouse) => {
-		return <Card warehouse={warehouse} />;
-	});
-
-	const isLoaded = (isLoading, warehouseCards) => {
+	//return cards components
+	const isLoaded = (isLoading) => {
 		if (isLoading) {
 			return <div>loading...</div>;
+		} else if (data.length == 0) {
+			return <div>No data</div>;
 		} else {
+			warehouseCards = data.map((warehouse) => {
+				return (
+					<Card key={warehouse._id} warehouse={warehouse} setData={setData} />
+				);
+			});
 			return warehouseCards;
 		}
 	};
 
+	// Return the component
 	return (
 		<div className=''>
-			<Search />
+			<Search name={'Inventory'} />
 			<div className='container'>
-				<div className='row'>{isLoaded(isLoading, warehouseCards)}</div>
+				<div className='row'>{isLoaded(isLoading)}</div>
 			</div>
 			<div
 				className='add-new-button'
@@ -31,30 +56,54 @@ export function Inventory({ data, isLoading }) {
 				}}>
 				+
 			</div>
-			<WarehouseForm isOpened={formOpened} setOpened={setForm} />
+			<WarehouseForm
+				isOpened={formOpened}
+				setOpened={setForm}
+				setData={setData}
+			/>
+			<Outlet />
 		</div>
 	);
 }
 
-function WarehouseForm({ isOpened, setOpened }) {
-	let [name, setName] = useState();
-	let [address, setAddress] = useState();
-	let [type, setType] = useState();
+/**
+ * Form to add new warehouse
+ * @fields name, address, type
+ *
+ *
+ */
+function WarehouseForm({ isOpened, setOpened, setData }) {
+	let [name, setName] = useState('');
+	let [address, setAddress] = useState('');
+	let [type, setType] = useState('');
 
+	const setDefault = () => {
+		setName('');
+		setAddress('');
+		setType('');
+	};
+
+	// Call when submit button is pressed in the form
 	async function handleSubmit(event) {
 		setOpened(false);
+		if (name === '' || address === '' || type === '') {
+			alert('Must have all field');
+			return;
+		}
 		let jsonData = {
 			name: name,
 			address: address,
 			type: type,
 		};
-		await fetch('/api', {
+		await fetch('/warehouse', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(jsonData),
-		});
+		}).then((res) => res.json().then((data) => setData(data)));
+		setDefault();
 	}
 
+	//Determine the class of the form if it is opened
 	function openForm(isOpened) {
 		if (!isOpened) {
 			return 'none';
@@ -78,7 +127,7 @@ function WarehouseForm({ isOpened, setOpened }) {
 					</div>
 					<form>
 						<div className='input'>
-							<label htmlFor='name'>Địa chỉ</label>
+							<label htmlFor='name'>Tên Kho</label>
 							<br />
 							<input
 								className='text-field'
@@ -87,7 +136,6 @@ function WarehouseForm({ isOpened, setOpened }) {
 								placeholder='Name'
 								onChange={(event) => {
 									setName(event.target.value);
-									console.log(name);
 								}}
 							/>
 						</div>
@@ -125,10 +173,11 @@ function WarehouseForm({ isOpened, setOpened }) {
 	);
 }
 
-function Search() {
+// Search component
+export function Search({ name }) {
 	return (
 		<div className='wrapper'>
-			<div className='section name'>Inventory</div>
+			<div className='section name'>{name}</div>
 			<div className='section'>
 				<form>
 					<input
