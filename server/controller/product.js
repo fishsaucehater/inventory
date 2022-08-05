@@ -3,24 +3,35 @@ const Product = require('../models/product');
 const Warehouse = require('../models/warehouse');
 
 exports.getProducts = async (req, res) => {
-	const queries = req.query;
+	try {
+		const queries = req.query;
 
-	const products = await Product.find(queries);
-	res.status(200).json(products);
+		const products = await Product.find(queries);
+		res.status(200).json(products);
+	} catch (error) {
+		console.error(error);
+	}
 };
 
 exports.addProducts = async (req, res) => {
-	const product = req.body;
-	for (let i = 0; i < product.quantity; i++) {
-		let data = { product_id: product.type, warehouse_id: product.warehouse };
-		console.log(data);
-		await Item.create(data);
-		await Product.findByIdAndUpdate(data.product_id, {
-			$inc: { quantity: 1 },
+	try {
+		const product = req.body;
+		for (let i = 0; i < product.quantity; i++) {
+			let data = {
+				product_id: product.type,
+				warehouse_id: product.warehouse,
+				createdOn: Date.now(),
+			};
+			await Item.create(data);
+		}
+		await Product.findByIdAndUpdate(product.type, {
+			$inc: { quantity: product.quantity },
 		});
-		await Warehouse.findByIdAndUpdate(data.warehouse_id, {
-			$inc: { itemCount: 1 },
+		await Warehouse.findByIdAndUpdate(product.warehouse, {
+			$inc: { itemCount: product.quantity },
 		});
+		res.send('Done');
+	} catch (error) {
+		console.error(error);
 	}
-	res.send('Done');
 };

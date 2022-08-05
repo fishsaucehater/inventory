@@ -12,9 +12,9 @@ function App() {
 			<NavBar />
 			<Routes>
 				<Route path='/home' element={<Inventory />} />
-				<Route path='/:id' element={<Warehouse />} />
+				<Route path='/inventory/:id' element={<Warehouse />} />
 				<Route path='add/:warehouse_id' element={<Form />} />
-				<Route path='*' element={<Navigate to='/home' />} />
+				<Route path='/*' element={<Navigate to='/home' />} />
 			</Routes>
 		</div>
 	);

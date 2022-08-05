@@ -23,13 +23,13 @@ export function NavBar() {
 						Inventories
 					</div>
 				</Link>
-				<Link to='/dashboard' className='button-wrapper'>
+				<Link to='dashboard' className='button-wrapper'>
 					<div className='button'>Dashboard</div>
 				</Link>
-				<Link to='/data' className='button-wrapper'>
+				<Link to='data' className='button-wrapper'>
 					<div className='button'>Data</div>
 				</Link>
-				<Link to='/operations' className='button-wrapper'>
+				<Link to='operations' className='button-wrapper'>
 					<div className='button'>Operations</div>
 				</Link>
 			</div>

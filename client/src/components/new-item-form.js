@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Select from 'react-select';
 
-function Form(props) {
+function Form() {
 	let [products, setProducts] = useState([]);
 	let [type, setType] = useState();
-	let [name, setName] = useState();
 	let [quantity, setQuant] = useState(0);
 
 	let id = useParams().warehouse_id;

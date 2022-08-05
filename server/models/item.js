@@ -17,6 +17,10 @@ const itemSchema = mongoose.Schema({
 		type: String,
 		default: 'In storage',
 	},
+	createdOn: {
+		type: Number,
+		required: [true, 'Must have created time'],
+	},
 });
 
 const Item = mongoose.model('Item', itemSchema);
