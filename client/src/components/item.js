@@ -4,7 +4,9 @@ import '../css/item.css';
 function Item({ item }) {
 	return (
 		<div className='item-card'>
-			<div className='item-img'></div>
+			<div
+				style={{ backgroundImage: 'url(/warehouse.png)' }}
+				className='item-img'></div>
 			<div className='item-information'></div>
 		</div>
 	);
