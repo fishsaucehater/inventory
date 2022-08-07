@@ -8,14 +8,10 @@ const warehouseSchema = mongoose.Schema({
 	address: {
 		type: String,
 		required: [true, 'Must have an address'],
-	}, 
+	},
 	type: {
 		type: String,
-		default: "Kho vat tu"
-	},
-	itemCount: {
-		type: Number,
-		default: 0,
+		default: 'Kho vat tu',
 	},
 });
 

@@ -1,3 +1,30 @@
 a {
     text-decoration: none;
 }
+
+.warehouse-menu {
+    display: flex;
+    padding: 0.5rem;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.warehouse-main {
+    background-color: whitesmoke
+}
+
+.title {
+    font-size: 24px;
+    padding-left: 0.5rem;
+    border-bottom: solid 1px;
+    background-color: #53c4f7;
+    color: white;
+    margin-bottom: 0;
+}
+
+.items-list {
+    flex-basis: 70%;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Select from 'react-select';
 
 function Form() {
@@ -9,18 +9,22 @@ function Form() {
 
 	let id = useParams().warehouse_id;
 
+	let navigate = useNavigate();
+
 	const handleSubmit = () => {
 		let jsonData = {
-			type: type.value,
+			product_id: type.value,
 			quantity: quantity,
-			warehouse: id,
+			warehouse_id: id,
 		};
 
-		fetch('/product', {
+		fetch('/item', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(jsonData),
 		}).then((res) => console.log(res));
+
+		navigate(`/inventory/${id}`, { replace: false });
 	};
 
 	useEffect(() => {

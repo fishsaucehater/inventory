@@ -13,13 +13,9 @@ const itemSchema = mongoose.Schema({
 		ref: 'Warehouse',
 		required: [true, 'Must have a name'],
 	},
-	status: {
-		type: String,
-		default: 'In storage',
-	},
-	createdOn: {
+	quantity: {
 		type: Number,
-		required: [true, 'Must have created time'],
+		default: 0,
 	},
 });
 

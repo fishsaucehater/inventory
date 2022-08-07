@@ -29,7 +29,6 @@ export function Card({ warehouse, setData }) {
 				</div>
 				<div className={warehouseType()}></div>
 				<div className='card-body'>
-					<h5 className='card-title'>Số lượng: {warehouse.itemCount}</h5>
 					<p className='card-text'>Địa chỉ: {warehouse.address}</p>
 					<Link to={`/inventory/${warehouse._id}`} className='btn btn-primary'>
 						Tới Kho

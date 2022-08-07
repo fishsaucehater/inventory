@@ -22,6 +22,7 @@ function Warehouse() {
 			.catch((err) => {
 				console.error(err);
 			});
+
 		fetch(`../item?warehouse=${id}`).then((res) =>
 			res.json().then((data) => setItems(data)),
 		);
@@ -29,9 +30,9 @@ function Warehouse() {
 
 	function showItems() {
 		if (items.length === 0) {
-			return <div>Loading...</div>;
+			return <div>No data</div>;
 		} else {
-			let itemList = items.map((item) => <div>{item.product_id.name}</div>);
+			let itemList = items.map((item) => <Item item={item} />);
 			return itemList;
 		}
 	}
@@ -42,13 +43,18 @@ function Warehouse() {
 		return (
 			<div>
 				<Search name={warehouse.name} />
-				<Link
-					to={`../../add/${id}`}
-					className='add-new-button'
-					onClick={() => {}}>
+				<Link to={`../../add/${id}`} className='add-new-button'>
 					+
 				</Link>
-				<Item />
+				<div className='warehouse-main'>
+					<div className='warehouse-menu'>
+						<div className='items-list'>
+							<h1 className='title'>Items List</h1>
+							{showItems()}
+						</div>
+						<div className='summary'></div>
+					</div>
+				</div>
 			</div>
 		);
 	}

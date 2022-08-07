@@ -9,10 +9,6 @@ const productSchema = mongoose.Schema({
 		type: Number,
 		required: [true, 'Must have a price'],
 	},
-	quantity: {
-		type: Number,
-		default: 0,
-	}
 });
 
 const Product = mongoose.model('Product', productSchema);
