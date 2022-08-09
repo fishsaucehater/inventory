@@ -3,8 +3,12 @@
     margin: 1rem;
 }
 
+.card {
+    border-radius: 1px;
+}
+
 .item {
-    height: 5px;
+    height: 3px;
     background-color: red;
 }
 
@@ -33,6 +37,6 @@
 }
 
 .machine {
-    height: 5px;
+    height: 3px;
     background-color: blue;
 }

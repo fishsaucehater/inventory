@@ -15,6 +15,15 @@
     margin-bottom: 0;
 }
 
+.title {
+    font-size: 24px;
+    padding-left: 0.5rem;
+    border-bottom: solid 1px;
+    background-color: #6162639b;
+    color: white;
+    margin-bottom: 0;
+}
+
 .status {
     font-size: 0.75rem;
 }

@@ -1,10 +1,17 @@
 const Item = require('../models/item');
 
 exports.getItems = async (req, res) => {
-	let warehouse = req.query.warehouse;
-	let query = Item.find({ warehouse_id: warehouse });
+	let filter = req.query;
+	let query = Item.find(filter);
 	let result = await query.populate('product_id');
 	res.status(200).json(result);
+};
+
+exports.deleteItems = async (req, res) => {
+	let filter = req.query;
+	let query = Item.find(filter);
+	await query.deleteMany();
+	res.status(200).send('Done');
 };
 
 exports.addItems = async (req, res) => {
@@ -18,16 +25,19 @@ exports.addItems = async (req, res) => {
 			await Item.create(items);
 			res.status(201).json(items);
 		} else {
-			let query = Item.find({
+			let filter = {
 				product_id: items.product_id,
 				warehouse_id: items.warehouse_id,
-			});
-			await Item.updateOne(query, {
+			};
+			await Item.findOneAndUpdate(filter, {
 				$inc: { quantity: items.quantity },
 			});
 			res.status(201).json(items);
 		}
 	} catch (error) {
-		console.error(error);
+		res.status(405).json({
+			body: error,
+		});
 	}
 };
+

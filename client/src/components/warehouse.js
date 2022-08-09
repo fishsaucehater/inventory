@@ -10,6 +10,7 @@ function Warehouse() {
 	let id = useParams().id;
 
 	useEffect(() => {
+		//Getting warehouse name
 		fetch(`../warehouse/${id}`, {
 			mode: 'cors',
 		})
@@ -23,19 +24,18 @@ function Warehouse() {
 				console.error(err);
 			});
 
-		fetch(`../item?warehouse=${id}`).then((res) =>
+		//Getting items in the warehouse
+		fetch(`../item?warehouse_id=${id}`).then((res) =>
 			res.json().then((data) => setItems(data)),
 		);
 	}, [id, items.length]);
 
-	function showItems() {
-		if (items.length === 0) {
-			return <div>No data</div>;
-		} else {
-			let itemList = items.map((item) => <Item item={item} />);
-			return itemList;
-		}
-	}
+	let itemsList =
+		items.length === 0 ? (
+			<div>No data</div>
+		) : (
+			items.map((item) => <Item key={item._id} item={item} />)
+		);
 
 	if (warehouse == null) {
 		return <div>Loading...</div>;
@@ -50,7 +50,7 @@ function Warehouse() {
 					<div className='warehouse-menu'>
 						<div className='items-list'>
 							<h1 className='title'>Items List</h1>
-							{showItems()}
+							{itemsList}
 						</div>
 						<div className='summary'></div>
 					</div>

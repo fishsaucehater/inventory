@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/NavBar.css';
 
 export function NavBar() {
+	let [openedNav, setNav] = useState(false);
+
+	let icon = openedNav ? 'material-icons opened-icon' : 'material-icons';
+
+	let navBar = openedNav ? 'sideBar' : 'sideBar sideBar-closed';
 	return (
 		<div className='nav-wrapper'>
 			<div className='nav-bar'>
@@ -11,11 +16,10 @@ export function NavBar() {
 					to='/menu'
 					className='button-wrapper'
 					onClick={() => {
-						console.log('clicked');
-						console.log('');
+						setNav(!openedNav);
 					}}>
 					<div className='button'>
-						<i className='material-icons'>apps</i>
+						<i className={icon}>view_headline</i>
 					</div>
 				</div>
 				<Link id='dashboard' to='/home' className='button-wrapper'>
@@ -33,6 +37,7 @@ export function NavBar() {
 					<div className='button'>Operations</div>
 				</Link>
 			</div>
+			<div className={navBar}></div>
 		</div>
 	);
 }

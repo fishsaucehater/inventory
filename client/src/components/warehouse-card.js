@@ -16,6 +16,10 @@ export function Card({ warehouse, setData }) {
 		fetch(`/warehouse/${warehouse._id}`, {
 			method: 'DELETE',
 		}).then((res) => res.json().then((data) => setData(data)));
+
+		fetch(`/item/?warehouse_id=${warehouse._id}`, {
+			method: 'DELETE',
+		});
 	}
 
 	return (

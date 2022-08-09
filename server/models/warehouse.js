@@ -3,10 +3,12 @@ const mongoose = require('mongoose');
 const warehouseSchema = mongoose.Schema({
 	name: {
 		type: String,
+		unique: true,
 		required: [true, 'Must have a name'],
 	},
 	address: {
 		type: String,
+		unique: true,
 		required: [true, 'Must have an address'],
 	},
 	type: {

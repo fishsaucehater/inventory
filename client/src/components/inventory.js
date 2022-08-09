@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import '../css/inventory.css';
+import '../css/main-menu.css';
 import { Card } from './warehouse-card';
-import Modal from 'react-bootstrap/Modal';
 
 /**
  *
@@ -102,74 +101,80 @@ function WarehouseForm({ isOpened, setOpened, setData }) {
 	}
 
 	//Determine the class of the form if it is opened
-	function openForm(isOpened) {
+	const openForm = (isOpened) => {
 		if (!isOpened) {
 			return 'none';
 		}
 		return 'form';
-	}
+	};
+
+	const modalOpened = () => {
+		if (!isOpened) {
+			return '';
+		} else {
+			return 'inventory-modal';
+		}
+	};
+
 	return (
-		<Modal
-			show={isOpened}
-			onHide={() => {
-				setOpened(false);
-			}}>
-			<Modal.Body>
-				<div className={openForm(isOpened)}>
-					<div
-						className='close-button'
-						onClick={() => {
-							setOpened(false);
-						}}>
-						<b>X</b>
-					</div>
-					<form>
-						<div className='input'>
-							<label htmlFor='name'>Tên Kho</label>
-							<br />
-							<input
-								className='text-field'
-								type='text'
-								name='name'
-								placeholder='Name'
-								onChange={(event) => {
-									setName(event.target.value);
-								}}
-							/>
-						</div>
-						<div className='input'>
-							<label htmlFor='address'>Địa chỉ</label>
-							<br />
-							<input
-								className='text-field'
-								type='text'
-								name='address'
-								placeholder='Address'
-								onChange={(event) => setAddress(event.target.value)}
-							/>
-						</div>
-						<div className='input'>
-							<label htmlFor='type'>Loại kho</label>
-							<br />
-							<input
-								className='text-field'
-								type='text'
-								id='javascript'
-								name='type'
-								placeholder='Nhập loại kho'
-								onChange={(event) => setType(event.target.value)}
-							/>
-						</div>
-						<div className='btn btn-outline-primary' onClick={handleSubmit}>
-							{' '}
-							Submit{' '}
-						</div>
-					</form>
+		<div className={modalOpened()}>
+			<div className={openForm(isOpened)}>
+				<div
+					className='close-button'
+					onClick={() => {
+						setOpened(false);
+					}}>
+					<b>X</b>
 				</div>
-			</Modal.Body>
-		</Modal>
+				<form>
+					<div className='input'>
+						<label htmlFor='name'>Tên Kho</label>
+						<br />
+						<input
+							className='text-field'
+							type='text'
+							name='name'
+							placeholder='Name'
+							onChange={(event) => {
+								setName(event.target.value);
+							}}
+						/>
+					</div>
+					<div className='input'>
+						<label htmlFor='address'>Địa chỉ</label>
+						<br />
+						<input
+							className='text-field'
+							type='text'
+							name='address'
+							placeholder='Address'
+							onChange={(event) => setAddress(event.target.value)}
+						/>
+					</div>
+					<div className='input'>
+						<label htmlFor='type'>Loại kho</label>
+						<br />
+						<input
+							className='text-field'
+							type='text'
+							id='javascript'
+							name='type'
+							placeholder='Nhập loại kho'
+							onChange={(event) => setType(event.target.value)}
+						/>
+					</div>
+					<div className='btn btn-outline-primary' onClick={handleSubmit}>
+						{' '}
+						Submit{' '}
+					</div>
+				</form>
+			</div>
+		</div>
 	);
 }
+
+
+
 
 // Search component
 export function Search({ name }) {

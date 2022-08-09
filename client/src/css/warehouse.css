@@ -13,18 +13,10 @@ a {
     background-color: whitesmoke
 }
 
-.title {
-    font-size: 24px;
-    padding-left: 0.5rem;
-    border-bottom: solid 1px;
-    background-color: #53c4f7;
-    color: white;
-    margin-bottom: 0;
-}
-
 .items-list {
     flex-basis: 70%;
     border-style: solid;
-    border-width: 2px;
-    border-radius: 5px;
+    border-width: 1px;
+    border-radius: 1px;
+    border-color: black;
 }
