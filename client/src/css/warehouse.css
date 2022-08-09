@@ -7,10 +7,12 @@ a {
     padding: 0.5rem;
     margin-left: 10px;
     margin-right: 10px;
+    height: 90%;
 }
 
 .warehouse-main {
-    background-color: whitesmoke
+    background-color: whitesmoke;
+    height: 100%;
 }
 
 .transactions {
@@ -37,4 +39,12 @@ a {
     border-width: 1px;
     border-radius: 1px;
     border-color: black;
+}
+
+.warehouse-content {
+    height: 100%;
+}
+
+.add-button:hover {
+    color: white;
 }

@@ -41,9 +41,9 @@ function Warehouse() {
 		return <div>Loading...</div>;
 	} else {
 		return (
-			<div>
+			<div className='warehouse-content'>
 				<div className='wrapper'>
-					<div className='section name'>Warehouses</div>
+					<div className='section name'>{warehouse.name}</div>
 					<div className='section '>
 						<form>
 							<input

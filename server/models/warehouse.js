@@ -14,6 +14,7 @@ const warehouseSchema = mongoose.Schema({
 	type: {
 		type: String,
 		default: 'Kho vat tu',
+		enum: ['Kho vat tu', 'Kho may'],
 	},
 });
 

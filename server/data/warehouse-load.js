@@ -8,7 +8,7 @@ const { del } = require('superagent');
 
 env.config({ path: '../config.env' });
 
-const DB = process.env.DB.replace('<password>', process.env.DB_PASSWORD);;
+const DB = process.env.DB_LOCAL.replace('<password>', process.env.DB_PASSWORD);;
 
 mongoose.connect(DB).then(() => console.log('DB connected'));
 

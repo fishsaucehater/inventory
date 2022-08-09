@@ -37,6 +37,8 @@ exports.deleteWarehouse = async (req, res) => {
 		const warehouses = await Warehouse.find();
 		res.json(warehouses);
 	} catch (error) {
-		console.log(error);
+		res.status(404).json({
+			message: error,
+		});
 	}
 };

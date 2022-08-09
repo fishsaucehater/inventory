@@ -8,7 +8,7 @@ import Warehouse from './warehouse';
 
 function App() {
 	return (
-		<div>
+		<div className='page'>
 			<NavBar />
 			<Routes>
 				<Route path='/home' element={<Inventory />} />

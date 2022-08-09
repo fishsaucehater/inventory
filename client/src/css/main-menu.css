@@ -26,6 +26,7 @@
 	cursor: pointer;
 	box-shadow: 0px 1px 2px black;
 	padding: 0 0.5rem 0 0.5rem;
+	transition: background-color 0.3s;
 }
 
 .add-button:hover {
@@ -131,6 +132,10 @@
 
 .close-button:hover {
 	color: rgb(9, 152, 192);
+}
+
+.page-content {
+	height: 100%;
 }
 
 @keyframes color {

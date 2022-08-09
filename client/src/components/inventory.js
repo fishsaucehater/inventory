@@ -42,7 +42,7 @@ export function Inventory() {
 
 	// Return the component
 	return (
-		<div className=''>
+		<div className='page-content'>
 			<div className='wrapper'>
 				<div className='section name'>Warehouses</div>
 				<div className='section '>
