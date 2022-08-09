@@ -30,6 +30,7 @@ function Warehouse() {
 		);
 	}, [id, items.length]);
 
+	// Show all
 	let itemsList =
 		items.length === 0 ? (
 			<div>No data</div>
@@ -42,12 +43,26 @@ function Warehouse() {
 	} else {
 		return (
 			<div>
-				<Search name={warehouse.name} />
-				<Link to={`../../add/${id}`} className='add-new-button'>
-					+
-				</Link>
+				<div className='wrapper'>
+					<div className='section name'>Warehouses</div>
+					<div className='section '>
+						<form>
+							<input
+								className='inventory-input'
+								placeholder='Search...'
+								type='text'
+							/>
+						</form>
+						<Link to={`../../add/${id}`} className='add-button'>
+							+ add items{' '}
+						</Link>
+					</div>
+				</div>
 				<div className='warehouse-main'>
 					<div className='warehouse-menu'>
+						<div className='transactions'>
+							<h1 className='title'>Recent Activities</h1>
+						</div>
 						<div className='items-list'>
 							<h1 className='title'>Items List</h1>
 							{itemsList}

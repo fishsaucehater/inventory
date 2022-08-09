@@ -43,16 +43,27 @@ export function Inventory() {
 	// Return the component
 	return (
 		<div className=''>
-			<Search name={'Inventory'} />
+			<div className='wrapper'>
+				<div className='section name'>Warehouses</div>
+				<div className='section '>
+					<form>
+						<input
+							className='inventory-input'
+							placeholder='Search...'
+							type='text'
+						/>
+					</form>
+					<div
+						className='add-button'
+						onClick={() => {
+							setForm(true);
+						}}>
+						+ add warehouse{' '}
+					</div>
+				</div>
+			</div>
 			<div className='container'>
 				<div className='row'>{isLoaded(isLoading)}</div>
-			</div>
-			<div
-				className='add-new-button'
-				onClick={() => {
-					setForm(true);
-				}}>
-				+
 			</div>
 			<WarehouseForm
 				isOpened={formOpened}
@@ -173,15 +184,12 @@ function WarehouseForm({ isOpened, setOpened, setData }) {
 	);
 }
 
-
-
-
 // Search component
-export function Search({ name }) {
+export function Search({ name, setForm }) {
 	return (
 		<div className='wrapper'>
 			<div className='section name'>{name}</div>
-			<div className='section'>
+			<div className='section '>
 				<form>
 					<input
 						className='inventory-input'
@@ -189,6 +197,13 @@ export function Search({ name }) {
 						type='text'
 					/>
 				</form>
+				<div
+					className='add-button'
+					onClick={() => {
+						setForm(true);
+					}}>
+					+ add warehouse{' '}
+				</div>
 			</div>
 		</div>
 	);
