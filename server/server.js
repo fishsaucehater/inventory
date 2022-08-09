@@ -6,7 +6,8 @@ const Warehouse = require(`${__dirname}/models/product.js`);
 env.config({ path: './config.env' });
 
 const PORT = process.env.PORT;
-const DB = process.env.DB;
+const DB = process.env.DB.replace('<password>', process.env.DB_PASSWORD);
+console.log(DB);
 
 mongoose.connect(DB).then((con) => {
 	console.log('DB connected');

@@ -183,28 +183,3 @@ function WarehouseForm({ isOpened, setOpened, setData }) {
 		</div>
 	);
 }
-
-// Search component
-export function Search({ name, setForm }) {
-	return (
-		<div className='wrapper'>
-			<div className='section name'>{name}</div>
-			<div className='section '>
-				<form>
-					<input
-						className='inventory-input'
-						placeholder='Search...'
-						type='text'
-					/>
-				</form>
-				<div
-					className='add-button'
-					onClick={() => {
-						setForm(true);
-					}}>
-					+ add warehouse{' '}
-				</div>
-			</div>
-		</div>
-	);
-}

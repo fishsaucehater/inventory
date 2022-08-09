@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Search } from './inventory';
 import Item from './item';
 import '../css/warehouse.css';
 
