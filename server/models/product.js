@@ -6,9 +6,13 @@ const productSchema = mongoose.Schema({
 		required: [true, 'Must have a name'],
 		unique: true,
 	},
-	price: {
+	retailPrice: {
 		type: Number,
 		required: [true, 'Must have a price'],
+	},
+	sellPrice: {
+		type: Number,
+		required: [true],
 	},
 });
 

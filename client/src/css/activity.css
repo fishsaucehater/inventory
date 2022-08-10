@@ -1,0 +1,67 @@
+.activity-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 0.5rem;
+    background-color: white;
+    cursor: default;
+    border: solid .5px;
+    border-bottom: solid 2px;
+    border-color: rgba(108, 107, 107, 0.386);
+}
+
+.tags {
+    margin: 5px 0 5px 10px  ;
+}
+
+.transaction-type {
+    display: inline-block;
+    text-align: center;
+    border-radius: 4px;
+    padding: 0 0.5rem 0 0.5rem;
+    cursor: pointer;
+    margin-right: 4px;
+    margin-left: 4px;
+    box-shadow: 0 1px 0.5px rgba(106, 106, 106, 0.424);
+    transition: all 0.2s;
+}
+
+.buy {
+    color: white;
+    background-color: rgb(78, 212, 68);   
+}
+
+.buy:hover {
+    color: white;
+    background-color: rgb(21, 174, 10);
+}
+
+.in-progress {
+    color: white;
+    background-color: rgba(33, 147, 227, 0.753);
+}
+
+.in-progress:hover {
+    background-color: cyan ;
+}
+
+.product-detail {
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.product-name {
+    font-size: 24px;
+}
+
+.product-quantity {
+    font-size: 18px;
+}
+
+.activity-date {
+    font-size: 12px;
+}
+
+
+

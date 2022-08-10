@@ -1,14 +1,17 @@
 [
 	{
 		"name": "Oc",
-		"price": 2000
+		"retailPrice": 1800,
+		"sellPrice": 2000
 	},
 	{
 		"name": "Ban phim",
-		"price": 30000
+		"retailPrice": 1800,
+		"sellPrice": 30000
 	},
 	{
 		"name": "Chuot",
-		"price": 200000
+		"retailPrice": 1800,
+		"sellPrice": 200000
 	}
 ]

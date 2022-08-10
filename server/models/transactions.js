@@ -18,14 +18,17 @@ const transactionSchema = mongoose.Schema({
 		ref: 'Product',
 		required: [true],
 	},
+	warehouse: {
+		type: Schema.Types.ObjectId,
+		ref: 'Warehouse',
+	},
 	status: {
 		type: String,
 		default: 'In progress',
-		enum: ['Pending', 'Completed', 'Warning', 'Cancelled'],
+		enum: ['In progress', 'Completed', 'Warning', 'Cancelled'],
 	},
 	quantity: {
 		type: Number,
-		default: 1,
 	},
 });
 

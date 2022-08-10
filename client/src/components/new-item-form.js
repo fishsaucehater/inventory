@@ -12,17 +12,12 @@ function Form() {
 	let navigate = useNavigate();
 
 	const handleSubmit = () => {
-		let jsonData = {
-			product_id: type.value,
-			quantity: quantity,
-			warehouse_id: id,
-		};
-
-		fetch('/item', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(jsonData),
-		}).then((res) => console.log(res));
+		fetch(
+			`/transaction/buy?type=BUY&warehouse=${id}&product=${type.value}&quantity=${quantity}`,
+			{
+				method: 'POST',
+			},
+		).then((res) => console.log(res));
 
 		navigate(`/inventory/${id}`, { replace: false });
 	};
