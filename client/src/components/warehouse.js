@@ -80,7 +80,7 @@ function Warehouse() {
 					<div className='warehouse-menu'>
 						<div className='transactions'>
 							<h1 className='title'>Recent Activities</h1>
-							{transactionsList}
+							<div className='transactions-content'>{transactionsList}</div>
 						</div>
 						<div className='items-list'>
 							<h1 className='title'>Items List</h1>

@@ -28,6 +28,11 @@ a {
     margin-right: 2rem;
 }
 
+.transactions-content {
+    height: 94%;
+    overflow: auto;
+}
+
 .title {
     font-size: 2rem;
     padding-left: 0.5rem;
